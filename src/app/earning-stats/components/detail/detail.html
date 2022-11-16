@@ -1,0 +1,74 @@
+<div class="card">
+  <h1 class="card-header" translate>Detail earning</h1>
+  <div class="card-body">
+    <div class="col col-md-12" *ngIf="!item" translate>No information</div>
+    <table class="table table-horizontal tble-responsive" *ngIf="item">
+      <tbody>
+        <tr>
+          <td translate>Tutor name:</td>
+          <td>{{item?.tutor?.name}}</td>
+        </tr>
+        <tr>
+          <td translate>Tutor email:</td>
+          <td>{{item?.tutor?.email}}</td>
+        </tr>
+        <tr>
+          <td translate>Admin %:</td>
+          <td>{{item?.commissionRate}} %</td>
+        </tr>
+        <tr>
+          <td translate>Total amount requested for payment:</td>
+          <td>{{item?.totalAmountPayoutRequest}} %</td>
+        </tr>
+        <tr class="table-primary">
+          <td colspan="2"><h3>Tutor earnings</h3></td>
+        </tr>
+        <tr>
+          <td>Total till date:</td>
+          <td>
+            {{item?.totalTutorTillDate | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+        <tr>
+          <td>Paid till date:</td>
+          <td>
+            {{item?.paidTutorTillDate | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+        <tr>
+          <td>Balance due:</td>
+          <td>
+            {{item?.balanceTutorDue | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+        <tr class="table-success">
+          <td colspan="2"><h3>Admin earnings</h3></td>
+        </tr>
+        <tr>
+          <td>Total till date:</td>
+          <td>
+            {{item?.totalAdminTillDate | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+        <tr>
+          <td>Paid till date:</td>
+          <td>
+            {{item?.paidAdminTillDate | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+        <tr>
+          <td>Balance due:</td>
+          <td>
+            {{item?.balanceAdminDue | currency : (config?.currencySymbol ? config?.currencySymbol : '$'): 'symbol' :
+            '1.0'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

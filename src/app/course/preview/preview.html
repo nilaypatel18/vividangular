@@ -1,0 +1,152 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-12 mb-3 mt-3">
+      <h2 translate style="text-align: center" *ngIf="course">{{course?.name}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="card-title" style="margin-left: 1em">{{shownItem?.title}}</h4>
+      <div *ngIf="shownItem&&shownItem.type=='video'" class="video-course-preview">
+        <video style="padding: 1em" *ngIf="shownItem" width="100%" src="{{shownItem?.url}}" controls></video>
+      </div>
+      <div *ngIf="shownItem&&shownItem.type=='audio'">
+        <audio style="padding: 1em" *ngIf="shownItem" width="100%" src="{{shownItem?.url}}" controls></audio>
+      </div>
+      <div *ngIf="shownItem&&shownItem.type=='pdf'">
+        <ngx-extended-pdf-viewer
+          [src]="shownItem?.url"
+          useBrowserLocale="true"
+          height="80vh"
+          [listenToURL]="true"
+        ></ngx-extended-pdf-viewer>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h4 class="card-title">Course content</h4>
+      <p class="card-text font-xs" *ngIf="course">
+        {{course?.totalSection}} sections • {{course?.totalLecture? course?.totalLecture : '0'}} lectures •
+        {{returnDurationString(course?.totalLength)}} total length
+      </p>
+      <div id="accordion">
+        <div *ngFor="let section of sections, let i=index">
+          <div id="heading-one">
+            <h3>
+              <button
+                type="button"
+                style="width: 90%"
+                class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+                data-toggle="collapse"
+                [attr.data-target]="'#collapse' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                {{section?.title}}
+                <p class="mb-0">
+                  <span>{{section.lectureIds.length}} lectures•{{returnDurationString(section.duration)}} </span>
+                </p>
+              </button>
+            </h3>
+          </div>
+          <div
+            id="{{'collapse' + i}}"
+            class="collapse"
+            [attr.aria-labelledby]="section._id"
+            data-parent="#accordion"
+            style="transition: all 0.5s ease 0s; padding-right: 3em"
+          >
+            <div *ngFor="let lecture of section.lectures, let iLecture = index">
+              <div class="d-flex justify-content-between">
+                <a
+                  class="font-sm js-video-button"
+                  href="javascript:void(0)"
+                  (click)="openLecture(lecture, i, iLecture)"
+                  [ngClass]="{'active':  i === indexSection&&iLecture === indexLecture}"
+                >
+                  <i class="fa fa-file mr-2 font-sm"></i>{{lecture?.title}}
+                </a>
+                <p class="font-sm card-text font-xs">{{returnDuration(lecture?.duration)}}</p>
+              </div>
+              <div
+                class="lecture-media font-xs"
+                style="transition: all 0.5s ease 0s"
+                *ngIf="openLectureId==lecture._id"
+              >
+                <div *ngFor="let media of lecture.medias, let iMedia = index">
+                  <a
+                    href="javascript:void(0)"
+                    (click)="viewMedia(media, i, iLecture, iMedia)"
+                    [ngClass]="{'active':  i === indexSection&&iLecture === indexLecture&&iMedia===indexMedia}"
+                    class="d-flex justify-content-between"
+                    *ngIf="media?.mediaType==='video'"
+                  >
+                    <p class="font-xs card-text font-xs">
+                      <i class="fa fa-play-circle mr-2 font-xs"></i>{{media?.media?.name}}
+                    </p>
+                    <div class="font-xs">
+                      <span class="label label-light-warning" translate>video</span>
+                      <span class="label label-light-primary ml-1">{{returnDuration(media?.media?.duration)}}</span>
+                    </div>
+                  </a>
+                  <a
+                    class="d-flex justify-content-between"
+                    (click)="viewMedia(media, i, iLecture, iMedia)"
+                    [ngClass]="{'active':  i === indexSection&&iLecture === indexLecture&&iMedia===indexMedia}"
+                    class="d-flex justify-content-between"
+                    *ngIf="media?.mediaType==='pdf'"
+                  >
+                    <p class="font-xs card-text font-xs">
+                      <i class="fa fa-file mr-2 font-xs"></i>{{media?.media?.name}}
+                    </p>
+                    <div class="font-xs">
+                      <span class="label label-light-warning" translate>pdf</span>
+                      <span class="label label-light-primary ml-1">{{returnDuration(media?.totalLength)}}</span>
+                    </div>
+                  </a>
+                  <a
+                    class="d-flex justify-content-between"
+                    (click)="viewMedia(media, i, iLecture, iMedia)"
+                    [ngClass]="{'active':  i === indexSection&&iLecture === indexLecture&&iMedia===indexMedia}"
+                    class="d-flex justify-content-between"
+                    *ngIf="media?.mediaType==='audio'"
+                  >
+                    <p class="font-xs card-text font-xs">
+                      <i class="fa fa-play-circle mr-2 font-xs"></i>{{media?.media?.name}}
+                    </p>
+                    <div class="font-xs">
+                      <span class="label label-light-warning" translate>audio</span>
+                      <span class="label label-light-primary ml-1">{{returnDuration(media?.media?.duration)}}</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3" *ngIf="createdBy!==adminId">
+        <div class="col-md-4">
+          <div class="form-group">
+            <button
+              class="btn btn-danger float-left"
+              type="button"
+              (click)="reject()"
+              *ngIf="course?.approved && course?._id"
+            >
+              Reject
+            </button>
+            <button
+              class="btn btn-success .btn-success float-left"
+              type="button"
+              (click)="approve()"
+              style="margin-right: 3px"
+              *ngIf="!course?.approved && course?._id"
+            >
+              Approve
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
