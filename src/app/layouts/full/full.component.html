@@ -1,0 +1,24 @@
+<div
+  id="main-wrapper"
+  class="horizontal-nav"
+  [ngClass]="{
+    defaultdark: color == 'defaultdark'
+  }"
+>
+  <div class="container-fluid fluid-custom">
+    <aside class="left-sidebar">
+      <div class="scroll-sidebar">
+        <app-sidebar></app-sidebar>
+      </div>
+    </aside>
+  </div>
+  <div class="page-wrapper">
+    <div class="container-fluid">
+      <breadcrumb></breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <footer class="footer">
+    © 2021 version {{ appConfig?.version }} build {{ appConfig?.build }}
+  </footer>
+</div>
