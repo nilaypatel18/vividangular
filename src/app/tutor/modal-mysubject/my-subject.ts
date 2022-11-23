@@ -1,22 +1,64 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { pick } from 'lodash';
-import { SubjectService } from '../../subject/subject.service';
+
 @Component({
   selector: 'my-subject-form',
   templateUrl: './my-subject.html'
 })
 export class MySubjectFormComponent implements OnInit {
-  @Input() subjects: any[];
+  @Input() subjects: any;
   @Input() mySubject: any;
   @Input() selectedCategory: any;
   public submitted: boolean = false;
+
+  public gradesTutor: any = [
+    {
+      categoryId: '1',
+      categoryName: 'Archaeology',
+      key: '1',
+      name: 'Science in Archaeology'
+    },
+    {
+      categoryId: '1',
+      categoryName: 'Archaeology',
+      key: '2',
+      name: 'Field Archaeology'
+    },
+    {
+      categoryId: '1',
+      categoryName: 'Archaeology',
+      key: '3',
+      name: 'Iconography'
+    },{
+      categoryId: '2',
+      categoryName: 'Oncology',
+      key: '4',
+      name: 'Brain Cancer'
+    },
+    {
+      categoryId: '2',
+      categoryName: 'Oncology',
+      key: '5',
+      name: 'Colorectal Cancer'
+    },
+    {
+      categoryId: '2',
+      categoryName: 'Oncology',
+      key: '6',
+      name: 'Hematology'
+    },  
+    
+  ];
+
   constructor(
     private toasty: ToastrService,
     public activeModal: NgbActiveModal,
-    private subjectService: SubjectService
+
   ) {}
+
+  
 
   ngOnInit() {
     if (this.selectedCategory) {
@@ -33,10 +75,9 @@ export class MySubjectFormComponent implements OnInit {
   }
 
   querySubjects() {
-    this.subjectService.search({ categoryIds: this.selectedCategory.originalCategoryId, take: 1000 }).then(resp => {
-      if (resp.data && resp.data.items && resp.data.items.length > 0) {
-        this.subjects = resp.data.items;
+
+        this.subjects = this.gradesTutor;
       }
-    });
-  }
+    
+  
 }

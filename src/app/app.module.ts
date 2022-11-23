@@ -13,6 +13,8 @@ import { FullComponent } from './layouts/full/full.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MediaModule } from './media/media.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
     SpinnerComponent,
     FullComponent,
     BreadcrumbComponent,
-    SidebarComponent
+    SidebarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -30,11 +33,13 @@ import { AuthGuard } from './shared/guard/auth.guard';
     FormsModule,
     NgbModule,
     AppRoutingModule,
+    NgSelectModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),
+    MediaModule,
   ],
   providers: [ AuthGuard],
   bootstrap: [AppComponent]

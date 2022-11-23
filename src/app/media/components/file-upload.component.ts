@@ -1,11 +1,18 @@
-import { Component, OnInit, EventEmitter, Input, Output, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Input,
+  Output,
+  AfterViewInit,
+} from '@angular/core';
 import {
   FileUploadModule,
   FileSelectDirective,
   FileDropDirective,
   FileUploader,
   FileItem,
-  FileLikeObject
+  FileLikeObject,
 } from 'ng2-file-upload';
 import { AuthService } from '../../shared/services';
 import { MediaService } from '../service';
@@ -28,7 +35,10 @@ import { ToastrService } from 'ngx-toastr';
       <small translate>Total length is required for PDF file</small>
     </div>
     <div class="text-center upload-zone">
-      <ul *ngIf="fileSelects.length" style="padding-left: 20px; text-align: 'left'">
+      <ul
+        *ngIf="fileSelects.length"
+        style="padding-left: 20px; text-align: 'left'"
+      >
         <li *ngFor="let file of fileSelects">{{ file.name }} selected.</li>
       </ul>
       <div
@@ -38,10 +48,15 @@ import { ToastrService } from 'ngx-toastr';
         [uploader]="uploader"
         class="well my-drop-zone"
         (onFileDrop)="fileDrop($event)"
+        (click)="fileuploadHandle()"
       >
-        <p class="text-center">{{ options.hintText || 'Drop or click to select file' }}</p>
+        <p class="text-center">
+          {{ options.hintText || 'Drop or click to select file' }}
+        </p>
         <br />
-        <p class="text-center" *ngIf="options.maxSize">{{ 'File size must under ' + options.maxSize + 'MB!' }}</p>
+        <p class="text-center" *ngIf="options.maxSize">
+          {{ 'File size must under ' + options.maxSize + 'MB!' }}
+        </p>
         <label class="custom-file">
           <input
             type="file"
@@ -51,6 +66,7 @@ import { ToastrService } from 'ngx-toastr';
             [multiple]="multiple"
             (onFileSelected)="fileSelect($event)"
             class="custom-file-input"
+            id="custom-file-upload"
             [accept]="accept"
           />
           <span class="custom-file-control"></span>
@@ -63,24 +79,22 @@ import { ToastrService } from 'ngx-toastr';
         ></div>
       </div>
       <p *ngIf="uploader.queue.length && !autoUpload">
-        <button type="button" class="btn btn-primary" *ngIf="!uploadOnSelect" (click)="upload()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          *ngIf="!uploadOnSelect"
+          (click)="upload()"
+        >
           {{ options.uploadText || 'Upload' }}
         </button>
       </p>
-    </div>`
+    </div>`,
 })
 export class FileUploadComponent implements OnInit, AfterViewInit {
-  /**
-   * option format
-   * {
-   *  customFields: { key: value } // additional field will be added to the form
-   *  query: { key: value } // custom query String
-   * }
-   */
   @Input() options: any;
   @Output() onUpload = new EventEmitter();
   public hasBaseDropZoneOver: Boolean = false;
-  public uploader: FileUploader;
+  public uploader: any;
   public multiple: Boolean = false;
   public uploadOnSelect: Boolean = false;
   public autoUpload: Boolean = false;
@@ -88,11 +102,14 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
   private uploadedItems: any = [];
   public accept: any;
   public fileSelects: any[] = [];
-  public totalLength: number;
-  constructor(private authService: AuthService, private mediaService: MediaService, private toasty: ToastrService) {}
+  public totalLength: any;
+  constructor(
+    private authService: AuthService,
+    private mediaService: MediaService,
+    private toasty: ToastrService
+  ) {}
 
   ngOnInit() {
-    // TODO - upload default file url and custom field here
     this.multiple = this.options && this.options.multiple;
     this.accept = this.options && this.options.accept;
     this.uploadOnSelect = this.options && this.options.uploadOnSelect;
@@ -101,19 +118,15 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
       this.options = {};
     }
 
-    // https://github.com/valor-software/ng2-file-upload/blob/development/src/file-upload/file-uploader.class.ts
-    this.uploader = new FileUploader({
-      url: window.appConfig.apiBaseUrl + '/media',
-      authToken: 'Bearer ' + this.authService.getAccessToken(),
-      autoUpload: this.options.autoUpload || false,
-      maxFileSize: window.appConfig.maximumFileSize * 1024 * 1024
-    });
+    this.uploader = new FileUploader({});
 
     this.uploader.onBuildItemForm = (fileItem: FileItem, form: any) => {
       fileItem.alias = this.options.fileFieldName || 'file';
       // append the form
       if (this.options.customFields) {
-        Object.keys(this.options.customFields).forEach(key => form.append(key, this.options.customFields[key]));
+        Object.keys(this.options.customFields).forEach((key) =>
+          form.append(key, this.options.customFields[key])
+        );
       }
 
       if (this.options.url) {
@@ -125,16 +138,20 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
         } else if (fileItem.file.type.indexOf('video') > -1) {
           ep = 'videos';
         }
-
-        fileItem.url = `${window.appConfig.apiBaseUrl}/media/${ep}`;
       }
     };
 
-    this.uploader.onProgressItem = (fileItem: FileItem, progress: any) => (fileItem.progress = progress);
+    this.uploader.onProgressItem = (fileItem: FileItem, progress: any) =>
+      (fileItem.progress = progress);
 
     this.uploader.onProgressAll = (progress: any) => (this.progress = progress);
 
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    this.uploader.onCompleteItem = (
+      item: any,
+      response: any,
+      status: any,
+      headers: any
+    ) => {
       this.uploader.removeFromQueue(item);
 
       // TODO - handle error event too
@@ -147,15 +164,19 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
     this.options.uploader = this.uploader;
   }
 
+  fileuploadHandle() {
+    document.getElementById('custom-file-upload')?.click()
+  }
+
   ngAfterViewInit() {
-    this.uploader.onAfterAddingFile = item => (item.withCredentials = false);
+    this.uploader.onAfterAddingFile = (item) => (item.withCredentials = false);
   }
 
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
 
-  fileSelect(event: EventEmitter<File[]>) {
+  fileSelect(event: any) {
     const file: File = event[0];
     const size = file.size / 1024 / 1024; // MB
     if (this.options.maxSize && size > this.options.maxSize) {
@@ -180,7 +201,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  fileDrop(event: EventEmitter<File[]>) {
+  fileDrop(event: any) {
     const file: File = event[0];
     const size = file.size / 1024 / 1024; // MB
     const fileLikeObject: FileLikeObject = event[0];
@@ -216,15 +237,20 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
   }
 
   acceptFile(fileType: string, accept: any) {
-    const typeRegex = new RegExp(accept.replace(/\*/g, '.*').replace(/\,/g, '|'));
+    const typeRegex = new RegExp(
+      accept.replace(/\*/g, '.*').replace(/\,/g, '|')
+    );
     return typeRegex.test(fileType);
   }
 
-  upload(frm: any) {
+  upload() {
     if (!this.uploader.queue.length) {
       return alert('Please select file');
     }
-    if (this.options?.lecturePdf && (!this.totalLength || this.totalLength <= 0)) {
+    if (
+      this.options?.lecturePdf &&
+      (!this.totalLength || this.totalLength <= 0)
+    ) {
       return alert('Total length must be greater than 0!');
     } else this.onUpload.emit(this.totalLength);
 
@@ -232,7 +258,9 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
       // TODO - do something
       this.uploader.clearQueue();
       if (this.options.onFinish) {
-        this.options.onFinish(this.options.multiple ? this.uploadedItems : this.uploadedItems[0]);
+        this.options.onFinish(
+          this.options.multiple ? this.uploadedItems : this.uploadedItems[0]
+        );
       }
 
       // reset because Queue reset too

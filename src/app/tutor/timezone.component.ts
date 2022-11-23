@@ -35,7 +35,7 @@ export class TimezoneComponent implements OnInit {
   @Input() userTz: string = 'Asia/Ho_Chi_Minh';
   @Output() onChange = new EventEmitter();
   public tzNames: string[];
-  public selectedTz: string;
+  public selectedTz: any;
   constructor() {
     this.tzNames = moment.tz.names();
   }

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { TutorService } from '../tutor.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SubjectService } from '../../subject/subject.service';
-import { LanguageService, CountryService } from '../../shared/services';
+//import { SubjectService } from '../../subject/subject.service';
+import { LanguageService } from '../../shared/services';
 import * as _ from 'lodash';
-import { responseError } from '../../shared/util';
+
+
 @Component({
   selector: 'app-tutor-create',
-  templateUrl: '../form.html'
+  templateUrl: '../form.html',
 })
 export class TutorCreateComponent implements OnInit {
   public info: any = {
@@ -17,35 +18,30 @@ export class TutorCreateComponent implements OnInit {
     password: '',
     email: '',
     isActive: false,
-    emailVerified: false,
     phoneNumber: '',
     phoneVerified: false,
     address: '',
     bio: '',
-    subjectIds: [],
-    certificatedTeacher: false,
     languages: [],
-    grades: [],
-    isHomePage: false,
     zipCode: '',
     idYoutube: '',
-    featured: false,
-    price1On1Class: 0,
     avatar: '',
     avatarUrl: '',
-    timezone: ''
+    timezone: '',
+    urlYoutube: '',
   };
-  public languages: any[];
+  public urlYoutube: any;
+  public languages: any;
   public subjects: any;
   public isSubmitted: any = false;
-  public countries: any[];
   public options: Object = {
     placeholderText: 'Enter bio',
     charCounterCount: false,
-    imageUpload: false
+    imageUpload: false,
   };
   public config: any;
   public loading: boolean = false;
+  public active: any;
   public quillConfig = {
     toolbar: {
       container: [
@@ -63,9 +59,9 @@ export class TutorCreateComponent implements OnInit {
         [{ font: [] }],
         [{ align: [] }],
 
-        ['clean']
+        ['clean'],
         // ['image']
-      ]
+      ],
     },
     keyboard: {
       bindings: {
@@ -73,33 +69,31 @@ export class TutorCreateComponent implements OnInit {
           key: 13,
           handler: (range, context) => {
             return true;
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 
   constructor(
     private router: Router,
     private tutorService: TutorService,
     private toasty: ToastrService,
-    private subjectService: SubjectService,
+    //private subjectService: SubjectService,
     private languageService: LanguageService,
-    private countryService: CountryService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.querySubjects();
     this.languages = this.languageService.getLang();
-    this.countries = this.countryService.getCountry();
     this.config = this.route.snapshot.data['appConfig'];
   }
 
   querySubjects() {
-    this.subjectService.search({ take: 100 }).then(resp => {
-      this.subjects = resp.data.items;
-    });
+    // this.subjectService.search({ take: 100 }).then(resp => {
+    //   this.subjects = resp.data.items;
+    // });
   }
 
   submit(frm: any) {
@@ -110,39 +104,49 @@ export class TutorCreateComponent implements OnInit {
     const data = _.pick(this.info, [
       'name',
       'username',
-      'subjectIds',
       'bio',
       'email',
       'isActive',
-      'emailVerified',
       'address',
       'emailNotification',
       'phoneNumber',
-      'phoneVerified',
-      'grades',
       'languages',
       'password',
-      'isHomePage',
       'zipCode',
-      'idYoutube',
       'country',
-      'featured',
-      'price1On1Class',
       'avatar',
       'state',
       'city',
       'timezone',
-      
+      'commissionRate',
       'enable2fa',
-      'accountVerified'
+      'accountVerified',
     ]);
-    this.tutorService
-      .create(data)
-      .then(resp => {
-        this.toasty.success('Created successfully!');
-        this.router.navigate(['/tutor/list']);
-      })
-      .catch(err => this.toasty.error(responseError(err)));
+
+    data.createdAt = new Date()
+
+    var tableData = localStorage.getItem('TutorData')
+      ? JSON.parse(localStorage.getItem('TutorData') || '')
+      : [];
+
+    var maxId = 0
+
+    if(tableData.length > 0)
+    {
+      for(let i = 0 ;i < tableData.length ; i++)
+      { 
+        if(tableData[i].id > maxId)
+        {
+          maxId = tableData[i].id
+        }
+      }
+    }
+
+    data.id = maxId + 1
+
+    tableData.push(data);
+    localStorage.setItem('TutorData', JSON.stringify(tableData));
+    this.router.navigate(['/tutor/list']);
   }
   afterUpload(evt) {
     if (!this.info._id) {

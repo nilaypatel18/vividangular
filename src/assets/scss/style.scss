@@ -3,7 +3,7 @@
 @import "app.scss";
 @import "pages.scss";
 @import "sidebar.scss";
-@import '../scss/icons/font-awesome/css/font-awesome.min.css';
+@import "../scss/icons/font-awesome/css/font-awesome.min.css";
 @import "widgets";
 @import "grid.scss";
 @import "spinners.scss";
@@ -12,6 +12,10 @@
 @import "custom.scss";
 
 @import "../../../node_modules/ngx-toastr/toastr.css";
+@import "../../../node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import "../../../node_modules/quill/dist/quill.core.css";
+@import "../../../node_modules/quill/dist/quill.bubble.css";
+@import "../../../node_modules/quill/dist/quill.snow.css";
 
 @import "responsive.scss";
 @import "colors/default-dark";

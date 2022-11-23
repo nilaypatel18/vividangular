@@ -21,7 +21,7 @@ import * as _ from 'lodash';
 })
 export class TutorGradeComponent {
   @Input() tutor: any;
-  @Input() isSubmitted: Boolean;
+  @Input() isSubmitted: any;
   public gradesTutor: any = [
     {
       nameGrade: 'High School',

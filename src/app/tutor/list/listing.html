@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col col-md-12">
-    <p class="total-items"><b>Total tutors: {{count}}</b></p>
+    <div class="page-infoaction">
+      <p class="total-items"><b>Total tutors: {{count}}</b></p>
+      <a [routerLink]="['/tutor/create']"
+        class="btn btn-primary"> Create New
+      </a>
+    </div>
     <div class="card filter-box">
       <div class="row">
         <div class="col-md-3">
@@ -30,20 +35,11 @@
           </select>
         </div>
         <div class="col-md-3">
-          <select class="form-control" [(ngModel)]="searchFields.rating">
-            <option value="">Filter by rating</option>
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-            <option value="0">0</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col-md-4 offset-md-4">
-          <button class="btn btn-primary btn-block" (click)="query()">Filter</button>
+          <div>
+            <button class="btn btn-primary btn-block px-5" (click)="query()">
+              Filter
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -55,10 +51,14 @@
               <th>
                 <a (click)="sortBy('name', 'desc')">Name</a>
                 <span *ngIf="sortOption.sortBy=='name'">
-                  <a (click)="sortBy('name', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('name', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('name', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('name', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -66,10 +66,14 @@
               <th>
                 <a (click)="sortBy('username', 'desc')">User name</a>
                 <span *ngIf="sortOption.sortBy=='username'">
-                  <a (click)="sortBy('username', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('username', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('username', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('username', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -77,43 +81,47 @@
               <th>
                 <a (click)="sortBy('email', 'desc')">Email</a>
                 <span *ngIf="sortOption.sortBy=='email'">
-                  <a (click)="sortBy('email', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('email', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('email', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('email', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
               </th>
-              <th>
-                <a (click)="sortBy('ratingAvg', 'desc')">Rating</a>
-                <span *ngIf="sortOption.sortBy=='ratingAvg'">
-                  <a (click)="sortBy('ratingAvg', 'asc')" *ngIf="sortOption.sortType=='desc'"
-                    ><i class="fa fa-caret-down"></i
-                  ></a>
-                  <a (click)="sortBy('ratingAvg', 'desc')" *ngIf="sortOption.sortType=='asc'"
-                    ><i class="fa fa-caret-up"></i
-                  ></a>
-                </span>
-              </th>
+
               <th>
                 <a (click)="sortBy('isActive', 'desc')">Active</a>
                 <span *ngIf="sortOption.sortBy=='isActive'">
-                  <a (click)="sortBy('isActive', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('isActive', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('isActive', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('isActive', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
               </th>
               <th>
-                <a (click)="sortBy('accountVerified', 'desc')">Account Verified</a>
+                <a (click)="sortBy('accountVerified', 'desc')"
+                  >Account Verified</a
+                >
                 <span *ngIf="sortOption.sortBy=='accountVerified'">
-                  <a (click)="sortBy('accountVerified', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('accountVerified', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('accountVerified', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('accountVerified', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -121,10 +129,14 @@
               <th>
                 <a (click)="sortBy('isHomePage', 'desc')">In Home Page</a>
                 <span *ngIf="sortOption.sortBy=='isHomePage'">
-                  <a (click)="sortBy('isHomePage', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('isHomePage', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('isHomePage', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('isHomePage', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -132,10 +144,14 @@
               <th>
                 <a (click)="sortBy('featured', 'desc')">Featured</a>
                 <span *ngIf="sortOption.sortBy=='featured'">
-                  <a (click)="sortBy('featured', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('featured', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('featured', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('featured', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -143,10 +159,14 @@
               <th>
                 <a (click)="sortBy('rejected', 'desc')">Approved?</a>
                 <span *ngIf="sortOption.sortBy=='rejected'">
-                  <a (click)="sortBy('rejected', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('rejected', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('rejected', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('rejected', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -154,10 +174,14 @@
               <th>
                 <a (click)="sortBy('createdAt', 'desc')">Created at</a>
                 <span *ngIf="sortOption.sortBy=='createdAt'">
-                  <a (click)="sortBy('createdAt', 'asc')" *ngIf="sortOption.sortType=='desc'"
+                  <a
+                    (click)="sortBy('createdAt', 'asc')"
+                    *ngIf="sortOption.sortType=='desc'"
                     ><i class="fa fa-caret-down"></i
                   ></a>
-                  <a (click)="sortBy('createdAt', 'desc')" *ngIf="sortOption.sortType=='asc'"
+                  <a
+                    (click)="sortBy('createdAt', 'desc')"
+                    *ngIf="sortOption.sortType=='asc'"
                     ><i class="fa fa-caret-up"></i
                   ></a>
                 </span>
@@ -170,7 +194,6 @@
               <td>{{item.name}}</td>
               <td>{{item.username}}</td>
               <td>{{item.email}}</td>
-              <td>{{item.ratingAvg}}</td>
               <td>
                 <span
                   class="badge badge-warning badge-update"
@@ -186,8 +209,16 @@
                 >
               </td>
               <td>
-                <span class="badge badge-warning badge-update" *ngIf="!item.accountVerified">N</span>
-                <span class="badge badge-success badge-update" *ngIf="item.accountVerified">Y</span>
+                <span
+                  class="badge badge-warning badge-update"
+                  *ngIf="!item.accountVerified"
+                  >N</span
+                >
+                <span
+                  class="badge badge-success badge-update"
+                  *ngIf="item.accountVerified"
+                  >Y</span
+                >
               </td>
               <td>
                 <span
@@ -218,17 +249,43 @@
                 >
               </td>
               <td>
-                <span class="badge badge-primary badge-update" *ngIf="item.pendingApprove">Pending</span>
-                <span class="badge badge-warning badge-update" *ngIf="!item.pendingApprove&&item.rejected">N</span>
-                <span class="badge badge-success badge-update" *ngIf="!item.pendingApprove&&!item.rejected">Y</span>
+                <span
+                  class="badge badge-primary badge-update"
+                  *ngIf="item.pendingApprove"
+                  >Pending</span
+                >
+                <span
+                  class="badge badge-warning badge-update"
+                  *ngIf="!item.pendingApprove&&item.rejected"
+                  >N</span
+                >
+                <span
+                  class="badge badge-success badge-update"
+                  *ngIf="!item.pendingApprove&&!item.rejected"
+                  >Y</span
+                >
               </td>
               <td>
                 <span>{{item.createdAt | date}}</span>
               </td>
               <td>
-                <a [routerLink]="['/tutor/update', item._id ]"> <i class="fa fa-pencil"></i> </a>&nbsp;
-                <a (click)="changeStatus(item)" class="btn btn-primary" *ngIf="item.isActive"> Activated </a>
-                <a (click)="changeStatus(item)" class="btn btn-danger" *ngIf="!item.isActive"> Deactivated </a>
+                <a [routerLink]="['/tutor/update', item.id ]">
+                  <i class="fa fa-pencil"></i> </a
+                >&nbsp;
+                <a
+                  (click)="changeStatus(item)"
+                  class="btn btn-primary"
+                  *ngIf="item.isActive"
+                >
+                  Activated
+                </a>
+                <a
+                  (click)="changeStatus(item)"
+                  class="btn btn-danger"
+                  *ngIf="!item.isActive"
+                >
+                  Deactivated
+                </a>
               </td>
             </tr>
           </tbody>

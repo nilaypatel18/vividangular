@@ -1,9 +1,85 @@
-@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
 
 .ps .ps__scrollbar-y-rail {
-    left: 3px;
-    right: auto;
+  left: 3px;
+  right: auto;
 }
 a {
   cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+#custom-file-upload {
+  display: none;
+}
+
+.upload-zone .my-drop-zone p {
+  left: 50%;
+  width: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.well.my-drop-zone {
+  margin-bottom: 5px;
+}
+
+.biography_textlabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.biography_maincontainer .ng-untouched.ng-pristine.ng-valid {
+  width: 100% !important;
+}
+
+.horizontal-nav.defaultdark .sidebar-nav ul#sidebarnav {
+  justify-content: end;
+}
+.fluid-custom {
+  max-height: 70px;
+}
+.horizontal-nav.defaultdark .sidebar-nav ul#sidebarnav {
+  height: 60pxn;
+}
+
+.page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "/";
+  color: #a6b7bf;
+  font-size: 18px;
+}
+
+.breadcrumb-textsize {
+  width: 100% !important;
+  background: #fff !important;
+  padding: 5px 15px !important;
+  border-radius: 6px !important;
+}
+
+.page-titles .breadcrumb{
+  font-size: 16px !important;
+  font-weight: 600px !important;
+}
+
+.card-block.table-responsive{
+  padding: 0 5px !important;
+}
+
+.page-infoaction{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.page-infoaction p{
+  margin: 0;
+  margin-right: 20px;
+  background: #c7c6c6;
+  padding: 7px 20px;
+  color: black;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
 }

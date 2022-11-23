@@ -8,7 +8,7 @@
     <div class="form-group">
       <label
         >Choose avatar
-        <small class="ml-1"> (Expected size: 320x421 pixels, Maximum size: {{maxFileSize}} mb )</small></label
+        <small class="ml-1"> (Expected size: 320x421 pixels, Maximum size: 5 mb )</small></label
       >
       <app-file-upload [options]="avatarOptions"></app-file-upload>
     </div>
@@ -18,7 +18,7 @@
   </div>
   <div class="card-body">
     <small class="text-muted">Email address</small>
-    <h6>{{user?.email}}</h6>
+    <h6>{{user?.email || 'N/A'}}</h6>
     <small class="text-muted p-t-30 db">Phone</small>
     <h6>{{user?.phoneNumber || 'N/A'}}</h6>
     <small class="text-muted p-t-30 db">Address</small>
@@ -30,11 +30,14 @@
       ><button class="btn btn-circle btn-secondary"><i class="fa fa-youtube"></i></button>
     </div>
   </div>
-  <div>
-    <hr />
+  <div *ngIf="user?.createdAt">
+    <div>
+      <hr />
+    </div>
+    <div class="card-body" >
+      <small class="text-muted">Created / joined at </small>
+      <h6>{{user?.createdAt | date}}</h6>
+    </div>
   </div>
-  <div class="card-body">
-    <small class="text-muted">Created / joined at </small>
-    <h6>{{user?.createdAt | date}}</h6>
-  </div>
+  
 </div>

@@ -10,7 +10,7 @@ const routes: Routes = [
     component: TutorCreateComponent,
     data: {
       title: 'Create New Tutor',
-      urls: [{ title: 'Tutors', url: '/tutor/list' }, { title: 'Listing' }]
+      urls: [{ title: 'Tutors', url: '/tutor/list' }, { title: 'Create' }]
     },
   },
   {

@@ -53,266 +53,266 @@ export const ROUTES: RouteInfo[] = [
       }
     ]
   },
-  {
-    path: '/users/list',
-    title: 'Students',
-    icon: 'fa fa-users',
-    class: 'has-arrow',
-    label: '',
-    labelClass: '',
-    extralink: false,
-    submenu: [
-      {
-        path: '/users/list',
-        title: 'List students',
-        icon: 'fa fa-users',
-        class: '',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/users/create',
-        title: 'Create new',
-        icon: 'fa fa fa-user-plus',
-        class: '',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: []
-      }
-    ]
-  },
-  {
-    path: '/appointment/list',
-    title: 'Appointments',
-    icon: 'fa fa-calendar',
-    class: 'has-arrow',
-    label: '',
-    labelClass: '',
-    extralink: false,
-    submenu: [
-      {
-        path: '/appointment/list',
-        title: 'List appointment',
-        icon: 'fa fa-calendar',
-        class: '',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: []
-      }
-    ]
-  },
-  {
-    path: '/',
-    title: 'Filters',
-    icon: 'fa fa-filter',
-    class: 'has-arrow',
-    label: '',
-    labelClass: '',
-    extralink: false,
-    submenu: [
-      {
-        path: '/grades/list',
-        title: 'Grades',
-        icon: 'fa fa-graduation-cap',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/grades/list',
-            title: 'List grades',
-            icon: 'fa fa-graduation-cap',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/grades/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      },
-      {
-        path: '/categories/list',
-        title: 'Categories',
-        icon: 'fa fa-bars',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/categories/list',
-            title: 'List categories',
-            icon: 'fa fa-bars',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/categories/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      },
-      {
-        path: '/subjects/list',
-        title: 'Subjects',
-        icon: 'fa fa-address-book',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/subjects/list',
-            title: 'List subjects',
-            icon: 'fa fa-address-book',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/subjects/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      },
-      {
-        path: '/topics/list',
-        title: 'Topics',
-        icon: 'fa fa-address-book',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/topics/list',
-            title: 'List topics',
-            icon: 'fa fa-address-book',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/topics/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      }
-    ]
-  },
-  {
-    path: '/testimonials/list',
-    title: 'Classes',
-    icon: 'fa fa-text-width',
-    class: 'has-arrow',
-    label: '',
-    labelClass: '',
-    extralink: false,
-    submenu: [
-      {
-        path: '/webinars/list',
-        title: 'Group Classes',
-        icon: 'fa fa-text-width',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/webinars/list',
-            title: 'List Group Classes',
-            icon: 'fa fa-text-width',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/webinars/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      },
-      {
-        path: '/courses/list',
-        title: 'Courses',
-        icon: 'fa fa-text-width',
-        class: 'has-arrow',
-        label: '',
-        labelClass: '',
-        extralink: false,
-        submenu: [
-          {
-            path: '/courses/list',
-            title: 'List courses',
-            icon: 'fa fa-text-width',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          },
-          {
-            path: '/courses/create',
-            title: 'Create new',
-            icon: 'fa fa-plus',
-            class: '',
-            label: '',
-            labelClass: '',
-            extralink: false,
-            submenu: []
-          }
-        ]
-      }
-    ]
-  },
+  // {
+  //   path: '/users/list',
+  //   title: 'Students',
+  //   icon: 'fa fa-users',
+  //   class: 'has-arrow',
+  //   label: '',
+  //   labelClass: '',
+  //   extralink: false,
+  //   submenu: [
+  //     {
+  //       path: '/users/list',
+  //       title: 'List students',
+  //       icon: 'fa fa-users',
+  //       class: '',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: []
+  //     },
+  //     {
+  //       path: '/users/create',
+  //       title: 'Create new',
+  //       icon: 'fa fa fa-user-plus',
+  //       class: '',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: []
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/appointment/list',
+  //   title: 'Appointments',
+  //   icon: 'fa fa-calendar',
+  //   class: 'has-arrow',
+  //   label: '',
+  //   labelClass: '',
+  //   extralink: false,
+  //   submenu: [
+  //     {
+  //       path: '/appointment/list',
+  //       title: 'List appointment',
+  //       icon: 'fa fa-calendar',
+  //       class: '',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: []
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/',
+  //   title: 'Filters',
+  //   icon: 'fa fa-filter',
+  //   class: 'has-arrow',
+  //   label: '',
+  //   labelClass: '',
+  //   extralink: false,
+  //   submenu: [
+  //     {
+  //       path: '/grades/list',
+  //       title: 'Grades',
+  //       icon: 'fa fa-graduation-cap',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/grades/list',
+  //           title: 'List grades',
+  //           icon: 'fa fa-graduation-cap',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/grades/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: '/categories/list',
+  //       title: 'Categories',
+  //       icon: 'fa fa-bars',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/categories/list',
+  //           title: 'List categories',
+  //           icon: 'fa fa-bars',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/categories/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: '/subjects/list',
+  //       title: 'Subjects',
+  //       icon: 'fa fa-address-book',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/subjects/list',
+  //           title: 'List subjects',
+  //           icon: 'fa fa-address-book',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/subjects/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: '/topics/list',
+  //       title: 'Topics',
+  //       icon: 'fa fa-address-book',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/topics/list',
+  //           title: 'List topics',
+  //           icon: 'fa fa-address-book',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/topics/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/testimonials/list',
+  //   title: 'Classes',
+  //   icon: 'fa fa-text-width',
+  //   class: 'has-arrow',
+  //   label: '',
+  //   labelClass: '',
+  //   extralink: false,
+  //   submenu: [
+  //     {
+  //       path: '/webinars/list',
+  //       title: 'Group Classes',
+  //       icon: 'fa fa-text-width',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/webinars/list',
+  //           title: 'List Group Classes',
+  //           icon: 'fa fa-text-width',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/webinars/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: '/courses/list',
+  //       title: 'Courses',
+  //       icon: 'fa fa-text-width',
+  //       class: 'has-arrow',
+  //       label: '',
+  //       labelClass: '',
+  //       extralink: false,
+  //       submenu: [
+  //         {
+  //           path: '/courses/list',
+  //           title: 'List courses',
+  //           icon: 'fa fa-text-width',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         },
+  //         {
+  //           path: '/courses/create',
+  //           title: 'Create new',
+  //           icon: 'fa fa-plus',
+  //           class: '',
+  //           label: '',
+  //           labelClass: '',
+  //           extralink: false,
+  //           submenu: []
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
 
   // {
   //   path: '/coupons/list',
