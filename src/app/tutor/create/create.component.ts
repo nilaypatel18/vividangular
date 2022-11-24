@@ -101,7 +101,7 @@ export class TutorCreateComponent implements OnInit {
     if (!frm.valid || !this.info.timezone) {
       return this.toasty.error('Please complete the required fields!');
     }
-    const data = _.pick(this.info, [
+    var data = _.pick(this.info, [
       'name',
       'username',
       'bio',

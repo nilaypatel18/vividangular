@@ -18,6 +18,10 @@ export class ProfileCardCustomComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  handleUpload = (value) => {
+    console.log(value)
+  }
+
   ngOnInit() {
     this.userId = this.user && this.user._id ? this.user._id : null;
 
@@ -25,6 +29,7 @@ export class ProfileCardCustomComponent implements OnInit {
       url: this.urlAvatar,
       fileFieldName: 'avatar',
       onFinish: (resp) => {
+        console.log(resp)
         this.user.avatarUrl = resp.data.url;
         this.afterUpload.emit(resp.data.avatar);
       },

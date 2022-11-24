@@ -1,0 +1,29 @@
+<div class="w-100 d-flex text-center flex-raw gap-4 mt-2">
+    <div>
+      <button type="button" class="btn btn-dark" (click)="openDialog()">
+        Modal
+      </button>
+    </div>
+    <div>
+      <app-daterangepicker
+        (selectHandle)="dateHandleChange($event)"
+        [selectedRange]="todoRange"
+      ></app-daterangepicker>
+    </div>
+    <div>
+      <app-datepicker
+        (selectHandle)="dateHandleChange($event)"
+        [selectedDate]="todoDate"
+      ></app-datepicker>
+    </div>
+    <div>
+      <app-select
+        [options]="exoptions"
+        (handleSelect)="onSelect($event)"
+      ></app-select>
+    </div>
+    <div>
+     <app-autocomplete [options]="exoptions"></app-autocomplete>
+    </div>
+    <div></div>
+  </div>

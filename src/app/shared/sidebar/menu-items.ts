@@ -18,9 +18,9 @@ export const ROUTES: RouteInfo[] = [
         label: '',
         labelClass: '',
         extralink: false,
-        submenu: []
-      }
-    ]
+        submenu: [],
+      },
+    ],
   },
   {
     path: '/tutor/list',
@@ -39,7 +39,7 @@ export const ROUTES: RouteInfo[] = [
         label: '',
         labelClass: '',
         extralink: false,
-        submenu: []
+        submenu: [],
       },
       {
         path: '/tutor/create',
@@ -49,41 +49,62 @@ export const ROUTES: RouteInfo[] = [
         label: '',
         labelClass: '',
         extralink: false,
-        submenu: []
-      }
-    ]
+        submenu: [],
+      },
+    ],
   },
-  // {
-  //   path: '/users/list',
-  //   title: 'Students',
-  //   icon: 'fa fa-users',
-  //   class: 'has-arrow',
-  //   label: '',
-  //   labelClass: '',
-  //   extralink: false,
-  //   submenu: [
-  //     {
-  //       path: '/users/list',
-  //       title: 'List students',
-  //       icon: 'fa fa-users',
-  //       class: '',
-  //       label: '',
-  //       labelClass: '',
-  //       extralink: false,
-  //       submenu: []
-  //     },
-  //     {
-  //       path: '/users/create',
-  //       title: 'Create new',
-  //       icon: 'fa fa fa-user-plus',
-  //       class: '',
-  //       label: '',
-  //       labelClass: '',
-  //       extralink: false,
-  //       submenu: []
-  //     }
-  //   ]
-  // },
+  {
+    path: '/testimonials/list',
+    title: 'Testimonials',
+    icon: 'fa fa-certificate',
+    class: 'has-arrow',
+    label: '',
+    labelClass: '',
+    extralink: false,
+    submenu: [
+      {
+        path: '/testimonials/list',
+        title: 'List testimonials',
+        icon: 'fa fa-certificate',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: [],
+      },
+      {
+        path: '/testimonials/create',
+        title: 'Create new',
+        icon: 'fa fa-plus',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: [],
+      },
+    ],
+  },
+  {
+    path: '/angularcomponats',
+    title: 'Components',
+    icon: 'fa fa-clone',
+    class: 'has-arrow',
+    label: '',
+    labelClass: '',
+    extralink: false,
+    submenu: [
+      {
+        path: '/angularcomponats',
+        title: 'Angular Components',
+        icon: 'fa fa-clone',
+        class: '',
+        label: '',
+        labelClass: '',
+        extralink: false,
+        submenu: [],
+      },
+    ],
+  },
   // {
   //   path: '/appointment/list',
   //   title: 'Appointments',
@@ -502,37 +523,7 @@ export const ROUTES: RouteInfo[] = [
   //       extralink: false,
   //       submenu: []
   //     },
-  //     {
-  //       path: '/testimonials/list',
-  //       title: 'Testimonials',
-  //       icon: 'fa fa-certificate',
-  //       class: 'has-arrow',
-  //       label: '',
-  //       labelClass: '',
-  //       extralink: false,
-  //       submenu: [
-  //         {
-  //           path: '/testimonials/list',
-  //           title: 'List testimonials',
-  //           icon: 'fa fa-certificate',
-  //           class: '',
-  //           label: '',
-  //           labelClass: '',
-  //           extralink: false,
-  //           submenu: []
-  //         },
-  //         {
-  //           path: '/testimonials/create',
-  //           title: 'Create new',
-  //           icon: 'fa fa-plus',
-  //           class: '',
-  //           label: '',
-  //           labelClass: '',
-  //           extralink: false,
-  //           submenu: []
-  //         }
-  //       ]
-  //     }
+
   //   ]
   // },
   // {

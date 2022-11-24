@@ -1,0 +1,14 @@
+.custom-autocomplate{
+    background: #ffffff;
+    border: 1px solid #c7c8c7;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #232322;
+    padding: 7px 12px;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+}

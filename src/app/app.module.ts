@@ -15,6 +15,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MediaModule } from './media/media.module';
+import { AngularcomponantsComponent } from './angularcomponants/angularcomponants.component';
+import { UtilsModule } from './utils/utils.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,7 @@ import { MediaModule } from './media/media.module';
     FullComponent,
     BreadcrumbComponent,
     SidebarComponent,
-    
+    AngularcomponantsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +43,9 @@ import { MediaModule } from './media/media.module';
       preventDuplicates: true
     }),
     MediaModule,
+    UtilsModule
   ],
-  providers: [ AuthGuard],
+  providers: [ AuthGuard,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -165,7 +165,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
   }
 
   fileuploadHandle() {
-    document.getElementById('custom-file-upload')?.click()
+    document.getElementById('custom-file-upload')?.click();
   }
 
   ngAfterViewInit() {
@@ -187,6 +187,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
     if (!this.uploader._fileSizeFilter(fileLikeObject)) {
       return this.toasty.error('File size is larger than maximum size!');
     }
+
     if (!this.multiple) {
       this.uploader.clearQueue();
       this.fileSelects = [];
@@ -244,6 +245,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
   }
 
   upload() {
+    console.log('Hello',this.uploader.queue.length)
     if (!this.uploader.queue.length) {
       return alert('Please select file');
     }
@@ -255,9 +257,11 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
     } else this.onUpload.emit(this.totalLength);
 
     this.uploader.onCompleteAll = () => {
+      console.log('Hello')
       // TODO - do something
       this.uploader.clearQueue();
       if (this.options.onFinish) {
+        console.log(this.uploadedItems);
         this.options.onFinish(
           this.options.multiple ? this.uploadedItems : this.uploadedItems[0]
         );

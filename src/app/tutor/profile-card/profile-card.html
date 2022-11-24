@@ -10,7 +10,7 @@
         >Choose avatar
         <small class="ml-1"> (Expected size: 320x421 pixels, Maximum size: 5 mb )</small></label
       >
-      <app-file-upload [options]="avatarOptions"></app-file-upload>
+      <app-file-upload [options]="avatarOptions" (onUpload)="handleUpload($event)"></app-file-upload>
     </div>
   </div>
   <div>

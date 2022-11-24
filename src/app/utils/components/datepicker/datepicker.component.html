@@ -1,0 +1,7 @@
+<div class="custome_datepicker">
+<mat-form-field appearance="fill">
+  <input matInput [matDatepicker]="picker1" [formControl]="date" />
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1 (closed)="handleDataChange()"></mat-datepicker>
+</mat-form-field>
+</div>
