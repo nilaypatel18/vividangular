@@ -21,7 +21,7 @@ jobs:
       env:
         CI: false
 
-    - name: FTP SYNC and UPLOAD
+    - name: ftp sync and upload
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         server: ${{ secrets.FTP_HOST }}
